@@ -1,0 +1,24 @@
+{
+  "name": "task1-crud-api",
+  "version": "1.0.0",
+  "description": "MERN Stack Internship - Task 1: CRUD REST API with Express, MongoDB & Mongoose",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "echo \"No tests configured yet\" && exit 0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "mongoose": "^8.2.4",
+    "morgan": "^1.10.0",
+    "express-validator": "^7.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "author": "MERN Intern",
+  "license": "MIT"
+}

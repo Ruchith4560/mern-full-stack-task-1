@@ -1,0 +1,107 @@
+{
+  "info": {
+    "name": "Task 1 – CRUD API (Products)",
+    "description": "Sample requests for the MERN Internship Task 1 CRUD API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:5000", "type": "string" },
+    { "key": "product_id", "value": "REPLACE_WITH_REAL_ID", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/",
+        "description": "Check if the server is running"
+      }
+    },
+    {
+      "name": "GET All Products",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/products?page=1&limit=10",
+          "host": ["{{base_url}}"],
+          "path": ["api", "products"],
+          "query": [
+            { "key": "page", "value": "1" },
+            { "key": "limit", "value": "10" },
+            { "key": "category", "value": "electronics", "disabled": true },
+            { "key": "isActive", "value": "true", "disabled": true }
+          ]
+        },
+        "description": "Retrieve all products with optional filtering and pagination"
+      }
+    },
+    {
+      "name": "GET Single Product",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/api/products/{{product_id}}",
+        "description": "Get a single product by its MongoDB ObjectId"
+      }
+    },
+    {
+      "name": "POST Create Product",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/api/products",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Wireless Headphones\",\n  \"description\": \"Noise-cancelling over-ear headphones\",\n  \"price\": 1999.99,\n  \"category\": \"electronics\",\n  \"stock\": 50\n}"
+        },
+        "description": "Create a new product"
+      }
+    },
+    {
+      "name": "PUT Update Product (full)",
+      "request": {
+        "method": "PUT",
+        "url": "{{base_url}}/api/products/{{product_id}}",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Wireless Headphones Pro\",\n  \"description\": \"Updated description\",\n  \"price\": 2499.99,\n  \"category\": \"electronics\",\n  \"stock\": 30\n}"
+        },
+        "description": "Full update — all fields required"
+      }
+    },
+    {
+      "name": "PATCH Update Product (partial)",
+      "request": {
+        "method": "PATCH",
+        "url": "{{base_url}}/api/products/{{product_id}}",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"price\": 1799.00,\n  \"stock\": 100\n}"
+        },
+        "description": "Partial update — only send fields you want to change"
+      }
+    },
+    {
+      "name": "DELETE Product",
+      "request": {
+        "method": "DELETE",
+        "url": "{{base_url}}/api/products/{{product_id}}",
+        "description": "Delete a product by ID"
+      }
+    },
+    {
+      "name": "POST Create Product – Validation Error (example)",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/api/products",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"\",\n  \"price\": -10,\n  \"category\": \"invalid-category\"\n}"
+        },
+        "description": "Should return 400 with validation errors"
+      }
+    }
+  ]
+}
