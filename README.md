@@ -47,7 +47,7 @@ task1-crud-api/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/task1-crud-api.git
+git clone https://github.com/Ruchith4560/mern-full-stack-task-1/task1-crud-api.git
 cd task1-crud-api
 ```
 
